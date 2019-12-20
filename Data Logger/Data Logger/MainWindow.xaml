@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Data_Logger"
         mc:Ignorable="d"
-        Title="Data Logger" Height="700.333" Width="1200.999"
+        Title="Data Logger" Height="650.333" Width="1200.999"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -16,21 +16,72 @@
         FontFamily="{DynamicResource MaterialDesignFont}" ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
         >
     <Grid>
-        <Button x:Name="button1" HorizontalAlignment="Center" Margin="41,46,900,486" Height="Auto" Width="143" RenderTransformOrigin="0.35,0.196" Content="" Click="Button_Click"/>
-        <Button HorizontalAlignment="Center" Margin="271,46,670,486" Height="Auto" Width="143" RenderTransformOrigin="0.35,0.196" Content="Controller"/>
-        <Button HorizontalAlignment="Center" Margin="504,46,437,486" Height="Auto" Width="143" RenderTransformOrigin="0.35,0.196" Content="Controller"/>
-        <Button HorizontalAlignment="Center" Margin="724,46,217,486" Height="Auto" Width="143" RenderTransformOrigin="0.35,0.196" Content="Controller"/>
-        <Button HorizontalAlignment="Center" Margin="41,176,900,356" Height="Auto" Width="143" RenderTransformOrigin="0.35,0.196" Content="Controller"/>
-        <Button HorizontalAlignment="Center" Margin="271,176,670,356" Height="Auto" Width="143" RenderTransformOrigin="0.35,0.196" Content="Controller"/>
-        <Button HorizontalAlignment="Center" Margin="504,176,437,356" Height="Auto" Width="143" RenderTransformOrigin="0.35,0.196" Content="Controller"/>
-        <Button HorizontalAlignment="Center" Margin="724,176,217,356" Height="Auto" Width="143" RenderTransformOrigin="0.35,0.196" Content="Controller"/>
-        <Button HorizontalAlignment="Center" Margin="41,309,900,223" Height="Auto" Width="143" RenderTransformOrigin="0.35,0.196" Content="Controller"/>
-        <Button HorizontalAlignment="Center" Margin="271,309,670,223" Height="Auto" Width="143" RenderTransformOrigin="0.35,0.196" Content="Controller"/>
-        <Button HorizontalAlignment="Center" Margin="504,309,437,223" Height="Auto" Width="143" RenderTransformOrigin="0.35,0.196" Content="Controller"/>
-        <Button HorizontalAlignment="Center" Margin="724,309,217,223" Height="Auto" Width="143" RenderTransformOrigin="0.35,0.196" Content="Controller"/>
-        <Button HorizontalAlignment="Center" Margin="41,449,900,83" Height="Auto" Width="143" RenderTransformOrigin="0.35,0.196" Content="Controller"/>
-        <Button HorizontalAlignment="Center" Margin="271,449,670,83" Height="Auto" Width="143" RenderTransformOrigin="0.35,0.196" Content="Controller"/>
-        <Button HorizontalAlignment="Center" Margin="504,449,437,83" Height="Auto" Width="143" RenderTransformOrigin="0.35,0.196" Content="Controller"/>
-        <Button HorizontalAlignment="Center" Margin="724,449,217,83" Height="Auto" Width="143" RenderTransformOrigin="0.35,0.196" Content="Controller"/>
+        <Button x:Name="button1" HorizontalAlignment="Center" Margin="41,46,900,486" Height="Auto" Width="143" RenderTransformOrigin="0.35,0.196" Click="Button_Click">
+            <Label x:Name="zoneLabel1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="Label" RenderTransformOrigin="0.452,-0.56" FontSize="15" FontWeight="Bold" Foreground="#DD070000"/>
+        </Button>
+        <Button HorizontalAlignment="Center" Margin="271,46,670,486" Height="Auto" Width="143" RenderTransformOrigin="0.35,0.196">
+            <Label x:Name="zoneLabel2" Content="Label" FontWeight="Bold" FontSize="15" Foreground="#DD000000"/>
+        </Button>
+        <Button HorizontalAlignment="Center" Margin="504,46,437,486" Height="Auto" Width="143" RenderTransformOrigin="0.35,0.196">
+            <Label x:Name="zoneLabel3" Content="Label" Foreground="#DD000000" FontWeight="Bold" FontSize="15"/>
+        </Button>
+        <Button HorizontalAlignment="Center" Margin="724,46,217,486" Height="Auto" Width="143" RenderTransformOrigin="0.35,0.196">
+            <Label x:Name="zoneLabel4" Content="Label" Foreground="#DD000000" FontWeight="Bold" FontSize="15"/>
+        </Button>
+        <Button HorizontalAlignment="Center" Margin="41,176,900,356" Height="Auto" Width="143" RenderTransformOrigin="0.35,0.196">
+            <Label x:Name="zoneLabel5" Content="Label" Foreground="#DD000000" FontWeight="Bold" FontSize="15"/>
+        </Button>
+        <Button HorizontalAlignment="Center" Margin="271,176,670,356" Height="Auto" Width="143" RenderTransformOrigin="0.35,0.196">
+            <Label x:Name="zoneLabel6" Content="Label" Foreground="#DD000000" FontWeight="Bold" FontSize="15"/>
+        </Button>
+        <Button HorizontalAlignment="Center" Margin="504,176,437,356" Height="Auto" Width="143" RenderTransformOrigin="0.35,0.196">
+            <Label x:Name="zoneLabel7" Content="Label" Foreground="#DD000000" FontWeight="Bold" FontSize="15"/>
+        </Button>
+        <Button HorizontalAlignment="Center" Margin="724,176,217,356" Height="Auto" Width="143" RenderTransformOrigin="0.35,0.196">
+            <Label x:Name="zoneLabel8" Content="Label" Foreground="#DD000000" FontSize="15" FontWeight="Bold"/>
+        </Button>
+        <Button HorizontalAlignment="Center" Margin="41,309,900,223" Height="Auto" Width="143" RenderTransformOrigin="0.35,0.196">
+            <Label x:Name="zoneLabel9" Content="Label" Foreground="#DD000000" FontSize="15" FontWeight="Bold"/>
+        </Button>
+        <Button HorizontalAlignment="Center" Margin="271,309,670,223" Height="Auto" Width="143" RenderTransformOrigin="0.35,0.196">
+            <Label x:Name="zoneLabel10" Content="Label" Foreground="Black" FontWeight="Bold" FontSize="15"/>
+        </Button>
+        <Button HorizontalAlignment="Center" Margin="504,309,437,223" Height="Auto" Width="143" RenderTransformOrigin="0.35,0.196">
+            <Label x:Name="zoneLabel11" Content="Label" Foreground="#DD000000" FontWeight="Bold" FontSize="15"/>
+        </Button>
+        <Button HorizontalAlignment="Center" Margin="724,309,217,223" Height="Auto" Width="143" RenderTransformOrigin="0.35,0.196">
+            <Label x:Name="zoneLabel12" Content="Label" Foreground="#DD000000" FontWeight="Bold" FontSize="15"/>
+        </Button>
+        <Button HorizontalAlignment="Center" Margin="41,449,900,83" Height="Auto" Width="143" RenderTransformOrigin="0.35,0.196">
+            <Label x:Name="zoneLabel13" Content="Label" Foreground="#DD000000" FontSize="15" FontWeight="Bold"/>
+        </Button>
+        <Button HorizontalAlignment="Center" Margin="271,449,670,83" Height="Auto" Width="143" RenderTransformOrigin="0.35,0.196">
+            <Label x:Name="zoneLabel14" Content="Label" Foreground="#DD000000" FontSize="15" FontWeight="Bold"/>
+        </Button>
+        <Button HorizontalAlignment="Center" Margin="504,449,437,83" Height="Auto" Width="143" RenderTransformOrigin="0.35,0.196">
+            <Label x:Name="zoneLabel15" Content="Label" Foreground="#DD000000" FontSize="15" FontWeight="Bold"/>
+        </Button>
+        <Button HorizontalAlignment="Center" Margin="724,449,217,83" Height="Auto" Width="143" RenderTransformOrigin="0.35,0.196">
+            <Label x:Name="zoneLabel16" Content="Label" Foreground="#DD000000" FontSize="15" FontWeight="Bold"/>
+        </Button>
+        <Label Content="Zone 1" HorizontalAlignment="Left" Margin="142,21,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <Label Content="Zone 2" HorizontalAlignment="Left" Margin="370,21,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <Label Content="Zone 3" HorizontalAlignment="Left" Margin="601,21,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <Label Content="Zone 4" HorizontalAlignment="Left" Margin="823,21,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <Label Content="Zone 5" HorizontalAlignment="Left" Margin="142,151,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <Label Content="Zone 6" HorizontalAlignment="Left" Margin="370,151,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <Label Content="Zone 7" HorizontalAlignment="Left" Margin="601,151,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <Label Content="Zone 8" HorizontalAlignment="Left" Margin="823,151,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <Label Content="Zone 9" HorizontalAlignment="Left" Margin="142,284,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <Label Content="Zone 10" HorizontalAlignment="Left" Margin="362,284,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <Label Content="Zone 11" HorizontalAlignment="Left" Margin="601,284,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <Label Content="Zone 12" HorizontalAlignment="Left" Margin="815,284,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <Label Content="Zone 13" HorizontalAlignment="Left" Margin="134,424,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <Label Content="Zone 14" HorizontalAlignment="Left" Margin="362,424,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <Label Content="Zone 15" HorizontalAlignment="Left" Margin="593,424,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <Label Content="Zone 16" HorizontalAlignment="Left" Margin="823,424,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <ComboBox x:Name="portsSelectComboBox" HorizontalAlignment="Left" Margin="1002,243,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="startButton" Content="Start" HorizontalAlignment="Left" Margin="1020,309,0,0" VerticalAlignment="Top" Width="75" Click="startButton_Click"/>
+        <Button x:Name="saveButton" Content="Save" HorizontalAlignment="Left" Margin="1020,346,0,0" VerticalAlignment="Top" Width="75" Click="startButton_Click"/>
     </Grid>
 </Window>
