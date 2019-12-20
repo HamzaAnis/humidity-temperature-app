@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Data_Logger"
         mc:Ignorable="d"
-        Title="Data Logger" Height="653.333" Width="1089.999"
+        Title="Data Logger" Height="700.333" Width="1200.999"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -13,9 +13,24 @@
         TextOptions.TextFormattingMode="Ideal" 
         TextOptions.TextRenderingMode="Auto"        
         Background="{DynamicResource MaterialDesignPaper}"
-        FontFamily="{DynamicResource MaterialDesignFont}" ResizeMode="NoResize"
+        FontFamily="{DynamicResource MaterialDesignFont}" ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
         >
     <Grid>
-        <Button HorizontalAlignment="Center">Controller</Button>
+        <Button x:Name="button1" HorizontalAlignment="Center" Margin="41,46,900,486" Height="Auto" Width="143" RenderTransformOrigin="0.35,0.196" Content="" Click="Button_Click"/>
+        <Button HorizontalAlignment="Center" Margin="271,46,670,486" Height="Auto" Width="143" RenderTransformOrigin="0.35,0.196" Content="Controller"/>
+        <Button HorizontalAlignment="Center" Margin="504,46,437,486" Height="Auto" Width="143" RenderTransformOrigin="0.35,0.196" Content="Controller"/>
+        <Button HorizontalAlignment="Center" Margin="724,46,217,486" Height="Auto" Width="143" RenderTransformOrigin="0.35,0.196" Content="Controller"/>
+        <Button HorizontalAlignment="Center" Margin="41,176,900,356" Height="Auto" Width="143" RenderTransformOrigin="0.35,0.196" Content="Controller"/>
+        <Button HorizontalAlignment="Center" Margin="271,176,670,356" Height="Auto" Width="143" RenderTransformOrigin="0.35,0.196" Content="Controller"/>
+        <Button HorizontalAlignment="Center" Margin="504,176,437,356" Height="Auto" Width="143" RenderTransformOrigin="0.35,0.196" Content="Controller"/>
+        <Button HorizontalAlignment="Center" Margin="724,176,217,356" Height="Auto" Width="143" RenderTransformOrigin="0.35,0.196" Content="Controller"/>
+        <Button HorizontalAlignment="Center" Margin="41,309,900,223" Height="Auto" Width="143" RenderTransformOrigin="0.35,0.196" Content="Controller"/>
+        <Button HorizontalAlignment="Center" Margin="271,309,670,223" Height="Auto" Width="143" RenderTransformOrigin="0.35,0.196" Content="Controller"/>
+        <Button HorizontalAlignment="Center" Margin="504,309,437,223" Height="Auto" Width="143" RenderTransformOrigin="0.35,0.196" Content="Controller"/>
+        <Button HorizontalAlignment="Center" Margin="724,309,217,223" Height="Auto" Width="143" RenderTransformOrigin="0.35,0.196" Content="Controller"/>
+        <Button HorizontalAlignment="Center" Margin="41,449,900,83" Height="Auto" Width="143" RenderTransformOrigin="0.35,0.196" Content="Controller"/>
+        <Button HorizontalAlignment="Center" Margin="271,449,670,83" Height="Auto" Width="143" RenderTransformOrigin="0.35,0.196" Content="Controller"/>
+        <Button HorizontalAlignment="Center" Margin="504,449,437,83" Height="Auto" Width="143" RenderTransformOrigin="0.35,0.196" Content="Controller"/>
+        <Button HorizontalAlignment="Center" Margin="724,449,217,83" Height="Auto" Width="143" RenderTransformOrigin="0.35,0.196" Content="Controller"/>
     </Grid>
 </Window>

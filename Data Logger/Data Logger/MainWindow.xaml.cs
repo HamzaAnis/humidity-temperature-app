@@ -23,6 +23,12 @@ namespace Data_Logger
         public MainWindow()
         {
             InitializeComponent();
+            button1.Content = "Temperature: 40C\nHumidity: 90";
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
