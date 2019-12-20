@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HumidityTemperature.Properties
+namespace Data_Logger.Properties
 {
 
 
