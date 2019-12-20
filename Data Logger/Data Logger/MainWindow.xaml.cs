@@ -82,7 +82,27 @@ namespace Data_Logger
 
         private void startButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show((string) portsSelectComboBox.SelectedValue);
+            try
+            {
+                SerialPort port = new SerialPort((string)portsSelectComboBox.SelectedValue,
+                    9600, Parity.None, 8, StopBits.One);
+                port.Open();
+                int count = 0;
+                while (true)
+                {
+                    String line= port.ReadLine();
+                    if (line != String.Empty)
+                    {
+                        Console.WriteLine(count + " : " + line);
+                        count++;
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+                throw;
+            }
         }
         private void saveButton_Click(object sender, RoutedEventArgs e)
         {
