@@ -25,16 +25,17 @@ namespace Data_Logger
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    {
-       
+    { 
         DataTable[] table = new DataTable[16];
+        DateTime before;
         private String portName = "";
         private SerialPort port;
+        private bool firstTime = true;
         public MainWindow()
         {
             InitializeComponent();
             this.Closing += MainWindow_Closing;
-
+            before = DateTime.Now;
             declare();
             setPortNames();
 
@@ -42,10 +43,11 @@ namespace Data_Logger
         private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             Create();
-            if (port.IsOpen)
-            {
-                port.Close();
-            }
+            if (port!=null) 
+                if(port.IsOpen)
+                {
+                    port.Close();
+                }
             System.Windows.Application.Current.Shutdown();
         }
         public void declare()
@@ -105,8 +107,19 @@ namespace Data_Logger
                 int count = 0;
                 while (port.IsOpen)
                 {
-                    String line = port.ReadLine();
-                    String time = port.ReadLine();
+                    String temp1 = port.ReadLine();
+                    String temp2 = port.ReadLine();
+                    String line="";
+                    String time="";
+                    if (temp1.Contains(":"))
+                    {
+                        time = temp1;
+                        line = temp2;
+                    }else if (temp2.Contains(":"))
+                    {
+                        time = temp2;
+                        line = temp1;
+                    }
                     String[] split = line.Split('|');
                     if (split.Length == 2)
                     {
@@ -137,9 +150,17 @@ namespace Data_Logger
                                 }));
 
                             }));
-                            for (int i = 0; i < 16; i++)
+                            DateTime now=DateTime.Now;
+                            int minutes = (int)before.Subtract(now).TotalMinutes;
+                            Console.WriteLine("Minutes are : "+minutes);
+                            if (minutes >= 5|| firstTime)
                             {
-                                table[i].Rows.Add((string)time, (string)temperatures[i],(string) humidity[i], "");
+                                for (int i = 0; i < 16; i++)
+                                {
+                                    table[i].Rows.Add((string)time, (string)temperatures[i], (string)humidity[i], "");
+                                }
+                                before=DateTime.Now;
+                                firstTime = false;
                             }
                         }
                         Console.WriteLine(temperatures.Length);
