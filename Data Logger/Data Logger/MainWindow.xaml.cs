@@ -87,37 +87,8 @@ namespace Data_Logger
         {
             this.Dispatcher.BeginInvoke(new Action(() =>
             {
-                Console.WriteLine("STARTED");
-            try
-            {
-                SerialPort port = new SerialPort((string)portsSelectComboBox.SelectedValue,
-                    9600, Parity.None, 8, StopBits.One);
-                port.Open();
-                int count = 0;
-                while (port.IsOpen)
-                {
-                    String line = port.ReadLine();
-                    String time = port.ReadLine();
-                    String[] split = line.Split('|');
-                    if (split.Length==2)
-                    {
-                        String[] temperatures = split[0].Split(',');
-                        String[] humidity = split[1].Split(',');
-                        Console.WriteLine(temperatures.Length);
-                        Console.WriteLine(humidity.Length);
-                        Console.WriteLine();
-                        count++;
-                    }
-                    Console.WriteLine("Temperatures"+line);
-                    Console.WriteLine("Time"+time);
-                    Console.WriteLine();
-                }
-            }
-            catch (Exception exception)
-            {
-                Console.WriteLine(exception);
-                MessageBox.Show(exception.ToString());
-            }
+                Console.WriteLine("STARTED"); 
+                
             }));
         }
         private void startButton_Click(object sender, RoutedEventArgs e)
@@ -125,6 +96,7 @@ namespace Data_Logger
             if (!running)
             {
                 Thread thr = new Thread(new ThreadStart(readPort));
+                thr.IsBackground = true;
                 thr.Start();
             }
             running = true;
