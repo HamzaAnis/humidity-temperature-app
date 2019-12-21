@@ -151,7 +151,7 @@ namespace Data_Logger
 
                             }));
                             DateTime now=DateTime.Now;
-                            int minutes = (int)before.Subtract(now).TotalMinutes;
+                            int minutes = (int)now.Subtract(before).TotalMinutes;
                             Console.WriteLine("Minutes are : "+minutes);
                             if (minutes >= 5|| firstTime)
                             {
