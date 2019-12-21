@@ -17,6 +17,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ClosedXML.Attributes;
 using ClosedXML.Excel;
+using DocumentFormat.OpenXml.Wordprocessing;
 
 namespace Data_Logger
 {
@@ -68,10 +69,10 @@ namespace Data_Logger
             for (int i = 0; i < 16; i++)
             {
                 table[i] = new DataTable();
-                table[i].Columns.Add("Dosage", typeof(int));
-                table[i].Columns.Add("Drug", typeof(string));
-                table[i].Columns.Add("Patient", typeof(string));
-                table[i].Columns.Add("Date", typeof(DateTime));
+                table[i].Columns.Add("Time", typeof(string));
+                table[i].Columns.Add("Temperature", typeof(string));
+                table[i].Columns.Add("Humidity", typeof(string));
+                table[i].Columns.Add("Remarks", typeof(string));
             }
         }
         public void setPortNames()
@@ -135,6 +136,10 @@ namespace Data_Logger
                                 }));
 
                             }));
+                            for (int i = 0; i < 16; i++)
+                            {
+                                table[i].Rows.Add((string)time, (string)temperatures[i],(string) humidity[i], "");
+                            }
                         }
                         Console.WriteLine(temperatures.Length);
                         Console.WriteLine(humidity.Length);
@@ -164,10 +169,12 @@ namespace Data_Logger
         }
         private void saveButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show((string)portsSelectComboBox.SelectedValue);
+            Create();
         }
-        public void Create(String filePath)
+        public void Create()
         {
+            String filePath = DateTime.Now.ToString("dd_MM_yyyy_h_mm_ss_tt")+".xlsx";
+            filePath = "Nice.xlsx";
             String[] sensors =
             {
                 "Sensor 1", "Sensor 2", "Sensor 3", "Sensor 4", "Sensor 5", "Sensor 6", "Sensor 7", "Sensor 8",
@@ -192,6 +199,11 @@ namespace Data_Logger
 
                 }
                 wb.SaveAs(filePath);
+            }
+
+            for (int i = 0; i < 16; i++)
+            {
+                table[i].Clear();
             }
 
         }
