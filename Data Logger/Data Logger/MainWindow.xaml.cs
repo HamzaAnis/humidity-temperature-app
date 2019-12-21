@@ -4,6 +4,7 @@ using System.Data;
 using System.IO.Ports;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -36,6 +37,7 @@ namespace Data_Logger
 
         public void declare()
         {
+            running = false;
             zoneLabel1.Content = "Temp=0°C\nHumidity=0";
             zoneLabel2.Content = "Temp=0°C\nHumidity=0";
             zoneLabel3.Content = "Temp=0°C\nHumidity=0";
@@ -80,29 +82,52 @@ namespace Data_Logger
 
         }
 
-        private void startButton_Click(object sender, RoutedEventArgs e)
+        private Boolean running;
+        public void readPort()
         {
+            this.Dispatcher.BeginInvoke(new Action(() =>
+            {
+                Console.WriteLine("STARTED");
             try
             {
                 SerialPort port = new SerialPort((string)portsSelectComboBox.SelectedValue,
                     9600, Parity.None, 8, StopBits.One);
                 port.Open();
                 int count = 0;
-                while (true)
+                while (port.IsOpen)
                 {
-                    String line= port.ReadLine();
-                    if (line != String.Empty)
+                    String line = port.ReadLine();
+                    String time = port.ReadLine();
+                    String[] split = line.Split('|');
+                    if (split.Length==2)
                     {
-                        Console.WriteLine(count + " : " + line);
+                        String[] temperatures = split[0].Split(',');
+                        String[] humidity = split[1].Split(',');
+                        Console.WriteLine(temperatures.Length);
+                        Console.WriteLine(humidity.Length);
+                        Console.WriteLine();
                         count++;
                     }
+                    Console.WriteLine("Temperatures"+line);
+                    Console.WriteLine("Time"+time);
+                    Console.WriteLine();
                 }
             }
             catch (Exception exception)
             {
                 Console.WriteLine(exception);
-                throw;
+                MessageBox.Show(exception.ToString());
             }
+            }));
+        }
+        private void startButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (!running)
+            {
+                Thread thr = new Thread(new ThreadStart(readPort));
+                thr.Start();
+            }
+            running = true;
         }
         private void saveButton_Click(object sender, RoutedEventArgs e)
         {
