@@ -92,11 +92,6 @@ namespace Data_Logger
         {
 
         }
-        private void WindowClosing()
-        {
-
-        }
-
         private Boolean running;
         public void readPort()
         {
@@ -160,6 +155,7 @@ namespace Data_Logger
         {
             if (!running)
             {
+                startButton.Content = "Running";
                 portName = (string) portsSelectComboBox.SelectedValue;
                 Thread thr = new Thread(new ThreadStart(readPort));
                 thr.Start();

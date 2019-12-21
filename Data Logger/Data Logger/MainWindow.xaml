@@ -81,8 +81,8 @@
         <Label Content="Zone 14" HorizontalAlignment="Left" Margin="362,424,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
         <Label Content="Zone 15" HorizontalAlignment="Left" Margin="593,424,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
         <Label Content="Zone 16" HorizontalAlignment="Left" Margin="823,424,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-        <ComboBox x:Name="portsSelectComboBox" HorizontalAlignment="Left" Margin="1002,243,0,0" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="startButton" Content="Start" HorizontalAlignment="Left" Margin="1020,309,0,0" VerticalAlignment="Top" Width="75" Click="startButton_Click"/>
-        <Button x:Name="saveButton" Content="Save" HorizontalAlignment="Left" Margin="1020,346,0,0" VerticalAlignment="Top" Width="75" Click="saveButton_Click"/>
+        <ComboBox x:Name="portsSelectComboBox" HorizontalAlignment="Left" Margin="984,238,0,0" VerticalAlignment="Top" Width="162"/>
+        <Button x:Name="startButton" Content="Start" HorizontalAlignment="Left" Margin="1002,309,0,0" VerticalAlignment="Top" Width="120" Click="startButton_Click"/>
+        <Button x:Name="saveButton" Content="Save" HorizontalAlignment="Left" Margin="1002,346,0,0" VerticalAlignment="Top" Width="120" Click="saveButton_Click"/>
     </Grid>
 </Window>
