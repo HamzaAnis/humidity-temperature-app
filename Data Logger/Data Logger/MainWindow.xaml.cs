@@ -41,6 +41,7 @@ namespace Data_Logger
         }
         private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            Create();
             if (port.IsOpen)
             {
                 port.Close();
@@ -173,8 +174,8 @@ namespace Data_Logger
         }
         public void Create()
         {
-            String filePath = DateTime.Now.ToString("dd_MM_yyyy_h_mm_ss_tt")+".xlsx";
-            filePath = "Nice.xlsx";
+            String filePath ="logs/" +DateTime.Now.ToString("dd-MM-yyyy_h-mm-ss-tt")+".xlsx";
+           // filePath = "Nice.xlsx";
             String[] sensors =
             {
                 "Sensor 1", "Sensor 2", "Sensor 3", "Sensor 4", "Sensor 5", "Sensor 6", "Sensor 7", "Sensor 8",
