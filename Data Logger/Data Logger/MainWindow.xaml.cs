@@ -25,16 +25,27 @@ namespace Data_Logger
     /// </summary>
     public partial class MainWindow : Window
     {
+       
         DataTable[] table = new DataTable[16];
         private String portName = "";
+        private SerialPort port;
         public MainWindow()
         {
             InitializeComponent();
+            this.Closing += MainWindow_Closing;
+
             declare();
             setPortNames();
 
         }
-
+        private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (port.IsOpen)
+            {
+                port.Close();
+            }
+            System.Windows.Application.Current.Shutdown();
+        }
         public void declare()
         {
             running = false;
@@ -81,15 +92,17 @@ namespace Data_Logger
         {
 
         }
+        private void WindowClosing()
+        {
 
-        
+        }
+
         private Boolean running;
         public void readPort()
         {
-
             try
             {
-                SerialPort port = new SerialPort(portName,
+               port = new SerialPort(portName,
                     9600, Parity.None, 8, StopBits.One);
                 port.Open();
                 int count = 0;
@@ -106,7 +119,7 @@ namespace Data_Logger
                         {
                             this.Dispatcher.InvokeAsync(new Action(() =>
                             {
-                                Application.Current.Dispatcher.BeginInvoke(new Action(() =>
+                                this.Dispatcher.BeginInvoke(new Action(() =>
                                 {
                                     zoneLabel1.Content = "Temp=" + temperatures[0] + "°C\nHumidity=" + humidity[0];
                                     zoneLabel2.Content = "Temp=" + temperatures[1] + "°C\nHumidity=" + humidity[1];
@@ -141,7 +154,6 @@ namespace Data_Logger
             catch (Exception exception)
             {
                 Console.WriteLine(exception);
-                MessageBox.Show(exception.ToString());
             }
         }
         private void startButton_Click(object sender, RoutedEventArgs e)
@@ -150,7 +162,6 @@ namespace Data_Logger
             {
                 portName = (string) portsSelectComboBox.SelectedValue;
                 Thread thr = new Thread(new ThreadStart(readPort));
-                thr.IsBackground = true;
                 thr.Start();
             }
             running = true;

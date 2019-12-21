@@ -13,5 +13,11 @@ namespace Data_Logger
     /// </summary>
     public partial class App : Application
     {
+        private void Application_Exit(object sender, ExitEventArgs e)
+        {
+            // Perform tasks at application exit
+            System.Windows.Application.Current.Shutdown();
+        }
     }
+
 }

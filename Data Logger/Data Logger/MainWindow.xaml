@@ -15,6 +15,7 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}" ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
         >
+
     <Grid>
         <Button x:Name="button1" HorizontalAlignment="Center" Margin="41,46,900,486" Height="Auto" Width="143" RenderTransformOrigin="0.35,0.196" Click="Button_Click">
             <Label x:Name="zoneLabel1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="Label" RenderTransformOrigin="0.452,-0.56" FontSize="15" FontWeight="Bold" Foreground="#DD070000"/>
