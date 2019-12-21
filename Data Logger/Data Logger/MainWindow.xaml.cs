@@ -189,6 +189,12 @@ namespace Data_Logger
             }
             running = true;
         }
+
+        private void TextBlock_Clicked(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show(
+                "Humidity and Temperature logger\nDeveloped by: Hamza Anis\nVersion: 0.1\nContact: hamzaanis9514@gmail.com\nPhone: 00923420011719");
+        }
         private void saveButton_Click(object sender, RoutedEventArgs e)
         {
             Create();

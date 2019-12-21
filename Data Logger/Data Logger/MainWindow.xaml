@@ -84,5 +84,6 @@
         <ComboBox x:Name="portsSelectComboBox" HorizontalAlignment="Left" Margin="984,238,0,0" VerticalAlignment="Top" Width="162"/>
         <Button x:Name="startButton" Content="Start" HorizontalAlignment="Left" Margin="1002,309,0,0" VerticalAlignment="Top" Width="120" Click="startButton_Click"/>
         <Button x:Name="saveButton" Content="Save" HorizontalAlignment="Left" Margin="1002,346,0,0" VerticalAlignment="Top" Width="120" Click="saveButton_Click"/>
+        <Label Content="Developed By" HorizontalAlignment="Left" Margin="1090,588,0,0" VerticalAlignment="Top" FontWeight="ExtraBlack" FontStyle="Italic" Foreground="#DDFFFFFF" PreviewMouseDown="TextBlock_Clicked"/>
     </Grid>
 </Window>
