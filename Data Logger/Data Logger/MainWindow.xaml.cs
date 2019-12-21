@@ -82,10 +82,12 @@ namespace Data_Logger
 
         }
 
-        private void updateContent()
+        
+        private Boolean running;
+        public void readPort()
         {
-            
-                try
+
+            try
             {
                 SerialPort port = new SerialPort(portName,
                     9600, Parity.None, 8, StopBits.One);
@@ -104,25 +106,25 @@ namespace Data_Logger
                         {
                             this.Dispatcher.InvokeAsync(new Action(() =>
                             {
-                                 Application.Current.Dispatcher.Invoke(new Action(() =>
-                                 {
-                                     zoneLabel1.Content = "Temp=" + temperatures[0] + "°C\nHumidity=" + humidity[0];
-                                     zoneLabel2.Content = "Temp=" + temperatures[1] + "°C\nHumidity=" + humidity[1];
-                                     zoneLabel3.Content = "Temp=" + temperatures[2] + "°C\nHumidity=" + humidity[2];
-                                     zoneLabel4.Content = "Temp=" + temperatures[3] + "°C\nHumidity=" + humidity[3];
-                                     zoneLabel5.Content = "Temp=" + temperatures[4] + "°C\nHumidity=" + humidity[4];
-                                     zoneLabel6.Content = "Temp=" + temperatures[5] + "°C\nHumidity=" + humidity[5];
-                                     zoneLabel7.Content = "Temp=" + temperatures[6] + "°C\nHumidity=" + humidity[6];
-                                     zoneLabel8.Content = "Temp=" + temperatures[7] + "°C\nHumidity=" + humidity[7];
-                                     zoneLabel9.Content = "Temp=" + temperatures[8] + "°C\nHumidity=" + humidity[8];
-                                     zoneLabel10.Content = "Temp=" + temperatures[9] + "°C\nHumidity=" + humidity[9];
-                                     zoneLabel11.Content = "Temp=" + temperatures[10] + "°C\nHumidity=" + humidity[10];
-                                     zoneLabel12.Content = "Temp=" + temperatures[11] + "°C\nHumidity=" + humidity[11];
-                                     zoneLabel13.Content = "Temp=" + temperatures[12] + "°C\nHumidity=" + humidity[12];
-                                     zoneLabel14.Content = "Temp=" + temperatures[13] + "°C\nHumidity=" + humidity[13];
-                                     zoneLabel15.Content = "Temp=" + temperatures[14] + "°C\nHumidity=" + humidity[14];
-                                     zoneLabel16.Content = "Temp=" + temperatures[15] + "°C\nHumidity=" + humidity[15];
-                                 }));
+                                Application.Current.Dispatcher.BeginInvoke(new Action(() =>
+                                {
+                                    zoneLabel1.Content = "Temp=" + temperatures[0] + "°C\nHumidity=" + humidity[0];
+                                    zoneLabel2.Content = "Temp=" + temperatures[1] + "°C\nHumidity=" + humidity[1];
+                                    zoneLabel3.Content = "Temp=" + temperatures[2] + "°C\nHumidity=" + humidity[2];
+                                    zoneLabel4.Content = "Temp=" + temperatures[3] + "°C\nHumidity=" + humidity[3];
+                                    zoneLabel5.Content = "Temp=" + temperatures[4] + "°C\nHumidity=" + humidity[4];
+                                    zoneLabel6.Content = "Temp=" + temperatures[5] + "°C\nHumidity=" + humidity[5];
+                                    zoneLabel7.Content = "Temp=" + temperatures[6] + "°C\nHumidity=" + humidity[6];
+                                    zoneLabel8.Content = "Temp=" + temperatures[7] + "°C\nHumidity=" + humidity[7];
+                                    zoneLabel9.Content = "Temp=" + temperatures[8] + "°C\nHumidity=" + humidity[8];
+                                    zoneLabel10.Content = "Temp=" + temperatures[9] + "°C\nHumidity=" + humidity[9];
+                                    zoneLabel11.Content = "Temp=" + temperatures[10] + "°C\nHumidity=" + humidity[10];
+                                    zoneLabel12.Content = "Temp=" + temperatures[11] + "°C\nHumidity=" + humidity[11];
+                                    zoneLabel13.Content = "Temp=" + temperatures[12] + "°C\nHumidity=" + humidity[12];
+                                    zoneLabel14.Content = "Temp=" + temperatures[13] + "°C\nHumidity=" + humidity[13];
+                                    zoneLabel15.Content = "Temp=" + temperatures[14] + "°C\nHumidity=" + humidity[14];
+                                    zoneLabel16.Content = "Temp=" + temperatures[15] + "°C\nHumidity=" + humidity[15];
+                                }));
 
                             }));
                         }
@@ -141,20 +143,6 @@ namespace Data_Logger
                 Console.WriteLine(exception);
                 MessageBox.Show(exception.ToString());
             }
-        }
-
-        private Boolean running;
-        public void readPort()
-        {
-            this.Dispatcher.BeginInvoke(new Action(() =>
-            {
-                Thread thr = new Thread(new ThreadStart(updateContent));
-                thr.IsBackground = true;
-                thr.Start();
-
-                Console.WriteLine("STARTED"); 
-                
-            }));
         }
         private void startButton_Click(object sender, RoutedEventArgs e)
         {
