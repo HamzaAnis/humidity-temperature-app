@@ -203,7 +203,11 @@ namespace Data_Logger
         }
         public void Create()
         {
-            table[0].Rows.Add("19/7/2019     19 : 10 : 0", "59","69", "");
+            /*table[0].Rows.Add("19/7/2019     19 : 10 : 0", "59","69", "");
+            table[0].Rows.Add("19/7/2019     19 : 10 : 0", "59", "69", "");
+            table[0].Rows.Add("19/7/2019     19 : 10 : 0", "59", "69", "");
+            table[0].Rows.Add("19/7/2019     19 : 10 : 0", "59", "69", "");
+            table[0].Rows.Add("19/7/2019     19 : 10 : 0", "59", "69", "");*/
 
             String filePath ="logs/" +DateTime.Now.ToString("dd-MM-yyyy_h-mm-ss-tt")+".xlsx";
            // filePath = "Nice.xlsx";
@@ -246,7 +250,7 @@ namespace Data_Logger
                        ws.Cell("B6").Value = "";
                        
                     ws.Range(8, 1, 8, 4).Merge().AddToNamed("Titles");
-                   ws.Cell(8, 1).InsertTable(table[i]);
+                   ws.Cell(8, 1).InsertTable(table[i]).Theme= XLTableTheme.TableStyleLight12;
 
                     // Prepare the style for the titles
                    
@@ -262,6 +266,8 @@ namespace Data_Logger
                     ws.Columns("B,C").Width = 15;
                     ws.Columns("A").Width =30;
                     ws.Columns("D").Width = 40;
+                    ws.Style.Font.FontColor = XLColor.Black;
+
                 }
                 wb.SaveAs(filePath);
             }
