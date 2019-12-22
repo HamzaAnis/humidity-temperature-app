@@ -211,20 +211,55 @@ namespace Data_Logger
                 "Zone 9", "Zone 10", "Zone 11", "Zone 12", "Zone 13", "Zone 14", "Zone 15", "Zone 16"
             };
             // From a DataTable
-            
             using (var wb = new XLWorkbook())
             {
                 for (int i = 0; i < 16; i++)
                 {
 
                     var ws = wb.Worksheets.Add(sensors[i]);
+                    ws.Range(1, 1, 7, 2).Merge().AddToNamed("Titles");
+                    ws.Style.Font.FontSize = 12;
+                    ws.Row(1).InsertRowsBelow(4);
+                     ws.Cell(1,1).Value = sensors[i];
+                    ws.Cell(1,1).Style.Font.SetBold(true);
+                    /*ws.Cell(2,1).Value = "Device Type: ";
+                     ws.Cell(3,1).Value = "Logging interval:";
+                     ws.Cell("A4").Value = "Logging Enable:";
+                    ws.Cell("A5").Value = "Location: ";
 
-                    ws.Range(1, 1, 1, 4).Merge().AddToNamed("Titles");
-                    ws.Cell(1, 1).InsertTable(table[i]);
+                     ws.Cell("B2").Value = "Temperature and Humidity logger";
+                     ws.Cell("B3").Value = "5 minutes";
+                     ws.Cell("B4").Value = "Yes";*/
 
+                      // First Names
+                       ws.Cell("B3").Value = "Device type";
+                       ws.Cell("B4").Value = "Logging interval";
+                       ws.Cell("B5").Value = "Logging enable";
+                       ws.Cell("B6").Value = "Location";
+
+                       // Last Names
+                       ws.Cell("C3").Value = "";
+                       ws.Cell("C4").Value = "5 minutes";
+                       ws.Cell("C5").Value = "Yes";
+                       ws.Cell("C6").Value = "";
+                       
+                    ws.Range(8, 1, 8, 4).Merge().AddToNamed("Titles");
+                    ws.Cell(8, 1).InsertTable(table[i]);
+                    
                     // Prepare the style for the titles
+                    ws.Column(1).Width = 25;
+                    ws.Column(2).Width = 15;
+                    ws.Column(3).Width = 15;
+                    ws.Column(4).Width = 40;
+                    var titlesStyle = wb.Style;
+                    titlesStyle.Font.Bold = true;
+                    titlesStyle.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+                    ws.PageSetup.PaperSize = XLPaperSize.A4Paper;
 
+                    // Format all titles in one shot
+                 //   wb.NamedRanges.NamedRange("Titles").Ranges.Style = titlesStyle;
                     ws.Columns().AdjustToContents();
+
 
 
                 }
