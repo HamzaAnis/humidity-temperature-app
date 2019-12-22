@@ -156,9 +156,13 @@ namespace Data_Logger
                             Console.WriteLine("Minutes are : "+minutes);
                             if (minutes >= 5|| firstTime)
                             {
+                                String[] splits = time.Split(' ');
                                 for (int i = 0; i < 16; i++)
                                 {
-                                    table[i].Rows.Add((string)time, (string)temperatures[i], (string)humidity[i], "");
+                                    if (splits.Length == 2)
+                                    {
+                                        table[i].Rows.Add((string)splits[0], (string)splits[1], (string)temperatures[i], (string)humidity[i], "");
+                                    }
                                 }
                                 before=DateTime.Now;
                                 firstTime = false;
