@@ -195,7 +195,7 @@ namespace Data_Logger
         private void TextBlock_Clicked(object sender, RoutedEventArgs e)
         {
             MessageBox.Show(
-                "Humidity and Temperature logger\nDeveloped by: Hamza Anis\nVersion: 0.1\nContact: hamzaanis9514@gmail.com\nPhone: 00923420011719");
+                "Temperature and Humidity logger\nDeveloped by: Hamza Anis\nVersion: 0.1\nContact: hamzaanis9514@gmail.com\nPhone: 00923420011719");
         }
         private void saveButton_Click(object sender, RoutedEventArgs e)
         {
@@ -203,6 +203,8 @@ namespace Data_Logger
         }
         public void Create()
         {
+            table[0].Rows.Add("19/7/2019     19 : 10 : 0", "59","69", "");
+
             String filePath ="logs/" +DateTime.Now.ToString("dd-MM-yyyy_h-mm-ss-tt")+".xlsx";
            // filePath = "Nice.xlsx";
             String[] sensors =
@@ -232,36 +234,34 @@ namespace Data_Logger
                      ws.Cell("B4").Value = "Yes";*/
 
                       // First Names
-                       ws.Cell("B3").Value = "Device type";
-                       ws.Cell("B4").Value = "Logging interval";
-                       ws.Cell("B5").Value = "Logging enable";
-                       ws.Cell("B6").Value = "Location";
+                       ws.Cell("A3").Value = "Device type";
+                       ws.Cell("A4").Value = "Logging interval";
+                       ws.Cell("A5").Value = "Logging enable";
+                       ws.Cell("A6").Value = "Location";
 
                        // Last Names
-                       ws.Cell("C3").Value = "";
-                       ws.Cell("C4").Value = "5 minutes";
-                       ws.Cell("C5").Value = "Yes";
-                       ws.Cell("C6").Value = "";
+                       ws.Cell("B3").Value = "Temperature and Humidity logger";
+                       ws.Cell("B4").Value = "5 minutes";
+                       ws.Cell("B5").Value = "Yes";
+                       ws.Cell("B6").Value = "";
                        
                     ws.Range(8, 1, 8, 4).Merge().AddToNamed("Titles");
-                    ws.Cell(8, 1).InsertTable(table[i]);
-                    
+                   ws.Cell(8, 1).InsertTable(table[i]);
+
                     // Prepare the style for the titles
-                    ws.Column(1).Width = 25;
-                    ws.Column(2).Width = 15;
-                    ws.Column(3).Width = 15;
-                    ws.Column(4).Width = 40;
+                   
                     var titlesStyle = wb.Style;
                     titlesStyle.Font.Bold = true;
                     titlesStyle.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
                     ws.PageSetup.PaperSize = XLPaperSize.A4Paper;
+                    ws.PageSetup.PagesWide = 1;
 
                     // Format all titles in one shot
-                 //   wb.NamedRanges.NamedRange("Titles").Ranges.Style = titlesStyle;
+                    //wb.NamedRanges.NamedRange("Titles").Ranges.Style = titlesStyle;
                     ws.Columns().AdjustToContents();
-
-
-
+                    ws.Columns("B,C").Width = 15;
+                    ws.Columns("A").Width =30;
+                    ws.Columns("D").Width = 40;
                 }
                 wb.SaveAs(filePath);
             }
