@@ -72,6 +72,7 @@ namespace Data_Logger
             for (int i = 0; i < 16; i++)
             {
                 table[i] = new DataTable();
+                table[i].Columns.Add("Date", typeof(string));
                 table[i].Columns.Add("Time", typeof(string));
                 table[i].Columns.Add("Temperature", typeof(string));
                 table[i].Columns.Add("Humidity", typeof(string));
@@ -205,8 +206,8 @@ namespace Data_Logger
            // filePath = "Nice.xlsx";
             String[] sensors =
             {
-                "Sensor 1", "Sensor 2", "Sensor 3", "Sensor 4", "Sensor 5", "Sensor 6", "Sensor 7", "Sensor 8",
-                "Sensor 9", "Sensor 10", "Sensor 11", "Sensor 12", "Sensor 13", "Sensor 14", "Sensor 15", "Sensor 16"
+                "Zone 1", "Zone 2", "Zone 3", "Zone 4", "Zone 5", "Zone 6", "Zone 7", "Zone 8",
+                "Zone 9", "Zone 10", "Zone 11", "Zone 12", "Zone 13", "Zone 14", "Zone 15", "Zone 16"
             };
             // From a DataTable
             
@@ -217,7 +218,7 @@ namespace Data_Logger
 
                     var ws = wb.Worksheets.Add(sensors[i]);
 
-                    ws.Range(1, 1, 1, 4).Merge().AddToNamed("Titles");
+                    ws.Range(1, 1, 1, 5).Merge().AddToNamed("Titles");
                     ws.Cell(1, 1).InsertTable(table[i]);
 
                     // Prepare the style for the titles
