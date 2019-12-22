@@ -72,7 +72,6 @@ namespace Data_Logger
             for (int i = 0; i < 16; i++)
             {
                 table[i] = new DataTable();
-                table[i].Columns.Add("Date", typeof(string));
                 table[i].Columns.Add("Time", typeof(string));
                 table[i].Columns.Add("Temperature", typeof(string));
                 table[i].Columns.Add("Humidity", typeof(string));
@@ -116,7 +115,7 @@ namespace Data_Logger
                     {
                         time = temp1;
                         line = temp2;
-                    }else if (temp2.Contains(":"))
+                    }else if (temp2.Contains(":") && temp2.Contains("/"))
                     {
                         time = temp2;
                         line = temp1;
@@ -154,15 +153,13 @@ namespace Data_Logger
                             DateTime now=DateTime.Now;
                             int minutes = (int)now.Subtract(before).TotalMinutes;
                             Console.WriteLine("Minutes are : "+minutes);
+                           
                             if (minutes >= 5|| firstTime)
                             {
-                                String[] splits = time.Split(' ');
+                                
                                 for (int i = 0; i < 16; i++)
                                 {
-                                    if (splits.Length == 2)
-                                    {
-                                        table[i].Rows.Add((string)splits[0], (string)splits[1], (string)temperatures[i], (string)humidity[i], "");
-                                    }
+                                        table[i].Rows.Add((string)time, (string)temperatures[i], (string)humidity[i], "");
                                 }
                                 before=DateTime.Now;
                                 firstTime = false;
@@ -222,7 +219,7 @@ namespace Data_Logger
 
                     var ws = wb.Worksheets.Add(sensors[i]);
 
-                    ws.Range(1, 1, 1, 5).Merge().AddToNamed("Titles");
+                    ws.Range(1, 1, 1, 4).Merge().AddToNamed("Titles");
                     ws.Cell(1, 1).InsertTable(table[i]);
 
                     // Prepare the style for the titles
