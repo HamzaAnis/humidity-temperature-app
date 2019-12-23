@@ -254,14 +254,10 @@ namespace Data_Logger
 
                     // Prepare the style for the titles
                    
-                    var titlesStyle = wb.Style;
-                    titlesStyle.Font.Bold = true;
-                    titlesStyle.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
                     ws.PageSetup.PaperSize = XLPaperSize.A4Paper;
                     ws.PageSetup.PagesWide = 1;
 
                     // Format all titles in one shot
-                    //wb.NamedRanges.NamedRange("Titles").Ranges.Style = titlesStyle;
                     ws.Columns().AdjustToContents();
                     ws.Columns("B,C").Width = 15;
                     ws.Columns("A").Width =30;
