@@ -269,7 +269,7 @@ namespace Data_Logger
                     ws.Cell("A5").Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Left;
                     ws.Cell("A6").Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Left;
                     ws.Cell("A1").Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Left;
-
+                    ws.PageSetup.PageOrder = XLPageOrderValues.OverThenDown;
                     //ws.Style.Font.FontColor = XLColor.Black;
 
                 }
