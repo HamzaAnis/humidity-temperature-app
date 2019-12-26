@@ -203,11 +203,14 @@ namespace Data_Logger
         }
         public void Create()
         {
-            /*table[0].Rows.Add("19/7/2019     19 : 10 : 0", "59","69", "");
-            table[0].Rows.Add("19/7/2019     19 : 10 : 0", "59", "69", "");
-            table[0].Rows.Add("19/7/2019     19 : 10 : 0", "59", "69", "");
-            table[0].Rows.Add("19/7/2019     19 : 10 : 0", "59", "69", "");
-            table[0].Rows.Add("19/7/2019     19 : 10 : 0", "59", "69", "");*/
+            for (int i = 0; i < 40; i++)
+            {
+                table[0].Rows.Add("19/7/2019     19 : 10 : 0", "59", "69", "");
+                table[0].Rows.Add("19/7/2019     19 : 10 : 0", "59", "69", "");
+                table[0].Rows.Add("19/7/2019     19 : 10 : 0", "59", "69", "");
+                table[0].Rows.Add("19/7/2019     19 : 10 : 0", "59", "69", "");
+                table[0].Rows.Add("19/7/2019     19 : 10 : 0", "59", "69", "");
+            }
 
             String filePath ="logs/" +DateTime.Now.ToString("dd-MM-yyyy_h-mm-ss-tt")+".xlsx";
            // filePath = "Nice.xlsx";
@@ -232,14 +235,14 @@ namespace Data_Logger
 
                       // First Names
                        ws.Cell("A3").Value = "Device type";
-                       ws.Cell("A4").Value = "Logging interval";
-                       ws.Cell("A5").Value = "Logging enable";
+                       ws.Cell("A4").Value = "Logging enable";
+                       ws.Cell("A5").Value = "Logging interval";
                        ws.Cell("A6").Value = "Location";
 
                        // Last Names
                        ws.Cell("B3").Value = "Temperature and Humidity logger";
-                       ws.Cell("B4").Value = "5 minutes";
-                       ws.Cell("B5").Value = "Yes";
+                       ws.Cell("B4").Value = "Yes";
+                       ws.Cell("B5").Value = "5 minutes";
                        ws.Cell("B6").Value = "";
                        
                     ws.Range(8, 1, 8, 4).Merge().AddToNamed("Titles");
@@ -255,6 +258,18 @@ namespace Data_Logger
                     ws.Columns("B,C").Width = 15;
                     ws.Columns("A").Width =30;
                     ws.Columns("D").Width = 40;
+                    ws.Columns().Style.Alignment.Vertical = XLAlignmentVerticalValues.Center;
+                    ws.Columns().Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+                    ws.Cell("B3").Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Left;
+                    ws.Cell("B4").Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Left;
+                    ws.Cell("B5").Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Left;
+                    ws.Cell("B6").Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Left;
+                    ws.Cell("A3").Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Left;
+                    ws.Cell("A4").Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Left;
+                    ws.Cell("A5").Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Left;
+                    ws.Cell("A6").Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Left;
+                    ws.Cell("A1").Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Left;
+
                     //ws.Style.Font.FontColor = XLColor.Black;
 
                 }
