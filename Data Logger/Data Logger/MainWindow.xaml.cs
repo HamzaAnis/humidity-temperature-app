@@ -208,13 +208,17 @@ namespace Data_Logger
         }
         public void Create()
         {
+            String date = DateTime.Now.ToString("dd-MM-yyyy");
+            String time = DateTime.Now.ToString("h:mm:ss tt");
             for (int i = 0; i < 40; i++)
             {
-                table[0].Rows.Add("19/7/2019     19 : 10 : 0", "59", "69", "");
-                table[0].Rows.Add("19/7/2019     19 : 10 : 0", "59", "69", "");
-                table[0].Rows.Add("19/7/2019     19 : 10 : 0", "59", "69", "");
-                table[0].Rows.Add("19/7/2019     19 : 10 : 0", "59", "69", "");
-                table[0].Rows.Add("19/7/2019     19 : 10 : 0", "59", "69", "");
+                table[0].Rows.Add((string)date,(string)time, "59", "69", "");
+                table[0].Rows.Add((string)date, (string)time, "59", "69", "");
+                table[0].Rows.Add((string)date, (string)time, "59", "69", "");
+                table[0].Rows.Add((string)date, (string)time, "59", "69", "");
+                table[0].Rows.Add((string)date, (string)time, "59", "69", "");
+                table[0].Rows.Add((string)date, (string)time, "59", "69", "");
+
             }
 
             String filePath ="logs/" +DateTime.Now.ToString("dd-MM-yyyy_h-mm-ss-tt")+".xlsx";
@@ -260,9 +264,10 @@ namespace Data_Logger
 
                     // Format all titles in one shot
                     ws.Columns().AdjustToContents();
-                    ws.Columns("B,C").Width = 15;
-                    ws.Columns("A").Width =30;
-                    ws.Columns("D").Width = 40;
+                    ws.Columns("A").Width = 17;
+                    ws.Columns("B").Width = 17;
+                    ws.Columns("C,D").Width = 15;
+                    ws.Columns("E").Width = 40;
                     ws.Columns().Style.Alignment.Vertical = XLAlignmentVerticalValues.Center;
                     ws.Columns().Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
                     ws.Cell("B3").Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Left;
