@@ -72,6 +72,7 @@ namespace Data_Logger
             for (int i = 0; i < 16; i++)
             {
                 table[i] = new DataTable();
+                table[i].Columns.Add("Date", typeof(string));
                 table[i].Columns.Add("Time", typeof(string));
                 table[i].Columns.Add("Temperature", typeof(string));
                 table[i].Columns.Add("Humidity", typeof(string));
@@ -154,12 +155,16 @@ namespace Data_Logger
                             int minutes = (int)now.Subtract(before).TotalMinutes;
                             Console.WriteLine("Minutes are : "+minutes);
                            
+                            String date= DateTime.Now.ToString("dd-MM-yyyy");
+                            time= DateTime.Now.ToString("h:mm:ss tt");
+                            
+
                             if (minutes >= 5|| firstTime)
                             {
                                 
                                 for (int i = 0; i < 16; i++)
                                 {
-                                        table[i].Rows.Add((string)time, (string)temperatures[i], (string)humidity[i], "");
+                                        table[i].Rows.Add((string)date,(string)time, (string)temperatures[i], (string)humidity[i], "");
                                 }
                                 before=DateTime.Now;
                                 firstTime = false;
