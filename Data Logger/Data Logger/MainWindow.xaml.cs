@@ -208,7 +208,7 @@ namespace Data_Logger
         }
         public void Create()
         {
-            String date = DateTime.Now.ToString("dd-MM-yyyy");
+            /*String date = DateTime.Now.ToString("dd-MM-yyyy");
             String time = DateTime.Now.ToString("h:mm:ss tt");
             for (int i = 0; i < 40; i++)
             {
@@ -219,9 +219,9 @@ namespace Data_Logger
                 table[0].Rows.Add((string)date, (string)time, "59", "69", "");
                 table[0].Rows.Add((string)date, (string)time, "59", "69", "");
 
-            }
+            }*/
 
-            String filePath ="logs/" +DateTime.Now.ToString("dd-MM-yyyy_h-mm-ss-tt")+".xlsx";
+            String filePath ="logs/" +DateTime.Now.ToString("dd-MM-yyyy_hh-mm-ss-tt")+".xlsx";
            // filePath = "Nice.xlsx";
             String[] sensors =
             {
