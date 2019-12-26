@@ -228,14 +228,7 @@ namespace Data_Logger
                     ws.Row(1).InsertRowsBelow(4);
                      ws.Cell(1,1).Value = sensors[i];
                     ws.Cell(1,1).Style.Font.SetBold(true);
-                    /*ws.Cell(2,1).Value = "Device Type: ";
-                     ws.Cell(3,1).Value = "Logging interval:";
-                     ws.Cell("A4").Value = "Logging Enable:";
-                    ws.Cell("A5").Value = "Location: ";
-
-                     ws.Cell("B2").Value = "Temperature and Humidity logger";
-                     ws.Cell("B3").Value = "5 minutes";
-                     ws.Cell("B4").Value = "Yes";*/
+                 
 
                       // First Names
                        ws.Cell("A3").Value = "Device type";
@@ -262,7 +255,7 @@ namespace Data_Logger
                     ws.Columns("B,C").Width = 15;
                     ws.Columns("A").Width =30;
                     ws.Columns("D").Width = 40;
-                    ws.Style.Font.FontColor = XLColor.Black;
+                    //ws.Style.Font.FontColor = XLColor.Black;
 
                 }
                 wb.SaveAs(filePath);
