@@ -219,8 +219,8 @@ namespace Data_Logger
                 table[0].Rows.Add((string)date, (string)time, "59", "69", "");
                 table[0].Rows.Add((string)date, (string)time, "59", "69", "");
 
-            }*/
-
+            }
+            */
             String filePath ="logs/" +DateTime.Now.ToString("dd-MM-yyyy_hh-mm-ss-tt")+".xlsx";
            // filePath = "Nice.xlsx";
             String[] sensors =
@@ -238,7 +238,8 @@ namespace Data_Logger
                     ws.Range(1, 1, 7, 2).Merge().AddToNamed("Titles");
                     ws.Style.Font.FontSize = 12;
                     ws.Row(1).InsertRowsBelow(4);
-                     ws.Cell(1,1).Value = sensors[i];
+                    ws.Cell(1,1).Value = sensors[i];
+                    ws.Cell(1, 1).Style.Font.FontSize = 18;
                     ws.Cell(1,1).Style.Font.SetBold(true);
                  
 
@@ -262,6 +263,11 @@ namespace Data_Logger
                     ws.PageSetup.PaperSize = XLPaperSize.A4Paper;
                     ws.PageSetup.PagesWide = 1;
 
+                    ws.PageSetup.Margins.Left = 1.25;
+
+                    ws.PageSetup.Margins.Bottom=1.05;
+                    ws.PageSetup.FirstPageNumber = 1;
+                    ws.PageSetup.Footer.Right.AddText(XLHFPredefinedText.PageNumber, XLHFOccurrence.AllPages);
                     // Format all titles in one shot
                     ws.Columns().AdjustToContents();
                     ws.Columns("A").Width = 17;
